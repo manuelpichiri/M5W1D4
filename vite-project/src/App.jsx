@@ -2,7 +2,7 @@ import "bootstrap";
 import Navigation from "./Components/MyNav/Navbar";
 import FooterProva from "./Components/MyFooter/Footer";
 import WelcomeAlert from "./Components/Welcome/Welcome";
-import BooksCover from "./Components/AllTheBooks/RenderBooks";
+import AllTheBooks from "./Components/AllTheBooks/AllTheBooks";
 import booksFantasy from "./Components/Genre/fantasy.json";
 import booksHorror from "./Components/Genre/horror.json";
 import booksHistory from "./Components/Genre/history.json";
@@ -22,7 +22,7 @@ const App = () => {
     <>
       <Navigation />
       <WelcomeAlert />
-      <BooksCover books={books} setBooks={setBooks} />
+      <AllTheBooks books={books} setBooks={setBooks} />
 
       <FooterProva></FooterProva>
     </>
