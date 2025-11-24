@@ -27,19 +27,20 @@ const AllTheBooks = ({ books, setBooks }) => {
   return (
     <Container>
       <Row>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center justify-content-center w-100">
           <input
+            className="w-100 input-search"
             placeholder="Cerca il tuo libro..."
             type="text"
             value={inputText}
             onChange={targetValuePlusReStockBook} //controlla il valore scritto all'interno dell'input e in caso di input vuoto esegue e setta i libri allo stato iniziale
           />
-          <button onClick={filteredBooks} className="btn btn-info ">
+          <button onClick={filteredBooks} className="btn btn-info ms-2">
             Cerca
           </button>
         </div>
       </Row>
-      <Row>
+      <Row className="d-flex justify-content-between">
         {books.map((book, index) => (
           <BookSingle
             img={book.img}

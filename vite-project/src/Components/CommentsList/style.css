@@ -1,4 +1,50 @@
 .div-comments-list {
   max-height: 180px;
+  max-width: 286px;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
+}
+.div-comment p {
+  padding-left: 5px;
+}
+.div-comment {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  max-width: 286px;
+  box-shadow: 4px #42424278;
+  background-color: rgb(236, 223, 223);
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.div-button-choice {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.span-comment,
+.span-author,
+.span-rate {
+  border-radius: 10%;
+  margin: 5px;
+  padding: 2px;
+}
+.span-comment {
+  background-color: burlywood;
+}
+
+.span-author {
+  background-color: coral;
+}
+
+.span-rate {
+  background-color: goldenrod;
 }
