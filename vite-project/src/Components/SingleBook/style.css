@@ -3,7 +3,9 @@
   border: 3px;
   max-width: 18rem;
   height: 100%;
-  box-shadow: 3px #000000ce;
+  box-shadow: 5px 5px 10px 2px #0000002a;
+  z-index: 0;
+  transition: all 0.5s ease-in-out;
 }
 
 .card-img-top {
@@ -15,4 +17,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.card-customize:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 10px 2px #00000077;
+  z-index: 1;
 }

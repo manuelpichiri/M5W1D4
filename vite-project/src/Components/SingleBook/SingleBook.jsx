@@ -14,9 +14,9 @@ const BookSingle = ({ img, title, price, category, asin }) => {
 
   return (
     <>
-      <Col xs={12} md={6} xl={4} className="g-2">
+      <Col xs={12} md={6} lg={3} className="g-5">
         <Card
-          className="card-customize shadow  "
+          className="card-customize   "
           onClick={provaClick}
           border={select ? "danger" : null}
         >
@@ -24,9 +24,11 @@ const BookSingle = ({ img, title, price, category, asin }) => {
           {/*Se select è true allora imposta danger, altrimenti non fare nulla  ?= se la condizione è vera, := altrimenti */}
           <Card.Body>
             <Card.Img variant="top" src={img} className="card-img-top" />
-            <Card.Title className="title-card">{title}</Card.Title>
-            <Card.Text>{price}</Card.Text>
-            <Card.Text>{category}</Card.Text>
+            <Card.Title className="title-card mt-2">{title}</Card.Title>
+            <Card.Text>{price}€</Card.Text>
+            <Card.Text className="badge text-bg-secondary  ">
+              {category}
+            </Card.Text>
           </Card.Body>
         </Card>
 

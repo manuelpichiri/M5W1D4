@@ -7,9 +7,9 @@ const FooterProva = () => {
     <footer className="container-fluid footer-custom">
       <Row>
         <Col className=" md-12 ">
-          <ul className="d-flex justify-content-center align-item-center gap-3">
+          <ul className="d-flex justify-content-center align-item-center gap-4 m-0 p-0">
             <li className="list-unstyled">
-              <a className="list-decoration" href="#">
+              <a className="list-decoration " href="#">
                 About Us
               </a>
             </li>

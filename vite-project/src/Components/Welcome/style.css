@@ -1,0 +1,11 @@
+.container-welcome {
+  border-radius: 20px;
+
+  font-size: 70px;
+  color: white;
+  text-shadow: 0 0 10px #00e1ff, 0 0 20px #00ff00;
+}
+
+.hero {
+  margin: 30px 10px;
+}

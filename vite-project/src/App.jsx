@@ -10,6 +10,9 @@ import booksRomance from "./Components/Genre/romance.json";
 import booksSciFi from "./Components/Genre/scifi.json";
 import "./App.css";
 import { useState } from "react";
+import { BookProvider } from "./context/BookContext";
+
+import { ThemeProvider } from "./context/ThemeContext";
 const App = () => {
   const [books, setBooks] = useState([
     ...booksFantasy,
@@ -19,13 +22,15 @@ const App = () => {
     ...booksSciFi,
   ]);
   return (
-    <div className="wallpaper">
-      <Navigation />
-      <WelcomeAlert />
-      <AllTheBooks books={books} setBooks={setBooks} />
+    <ThemeProvider>
+      <BookProvider>
+        <Navigation />
+        <WelcomeAlert />
+        <AllTheBooks />
 
-      <FooterProva></FooterProva>
-    </div>
+        <FooterProva></FooterProva>
+      </BookProvider>
+    </ThemeProvider>
   );
 };
 
