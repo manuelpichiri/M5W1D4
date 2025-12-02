@@ -5,11 +5,13 @@ export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
 
   return (
-    <ThemeProvider
+    <ThemeContext.Provider
       value={{
         isDark,
         setIsDark,
       }}
-    ></ThemeProvider>
+    >
+      {children}
+    </ThemeContext.Provider>
   );
 };

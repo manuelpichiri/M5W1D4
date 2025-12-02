@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import CommentList from "../CommentsList/CommentsList";
 import "./style.css";
+import { CommentContext } from "../../context/CommentContext";
 const token =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGViYjc4ZWY0ZWVkNTAwMTVhOWNhYjIiLCJpYXQiOjE3NjM3NDk0OTUsImV4cCI6MTc2NDk1OTA5NX0.RDwrCS94rhnnI_ZJ4SnW0hcBP93djavojHLQ1N4E-FE";
 
 const CommentArea = ({ asin }) => {
+  const { isSelected, setIsSelected } = useContext(CommentContext);
+
+  console.log("sono il commento", isSelected);
+
   const [formData, setFormData] = useState({
     comment: "",
     rate: "",
@@ -43,7 +48,13 @@ const CommentArea = ({ asin }) => {
     e.preventDefault();
     await postComment();
   };
-  console.log("Ciao sono fromdata", formData);
+
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      elementId: asin,
+    }));
+  }, [asin]);
   return (
     <>
       <Form onSubmit={submitOn} className="custom-form">
@@ -72,7 +83,7 @@ const CommentArea = ({ asin }) => {
         </div>
       </Form>
       <CommentList
-        asin={asin}
+        asin={isSelected}
         _Id={formData.elementId}
         comment={formData.comment}
         rate={formData.rate}

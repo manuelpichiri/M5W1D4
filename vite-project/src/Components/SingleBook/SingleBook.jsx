@@ -1,24 +1,23 @@
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import "./style.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CommentArea from "../CommentArea/CommentArea";
-
+import { CommentContext } from "../../context/CommentContext";
 const BookSingle = ({ img, title, price, category, asin }) => {
-  const [select, setSelect] = useState(false);
+  const { isSelected, setIsSelected } = useContext(CommentContext);
 
   const provaClick = () => {
-    setSelect(!select); //se select è true diventa false, se è false diventa true, nego il valore attuale di select
-    console.log(select);
+    setIsSelected(asin);
   };
 
   return (
     <>
-      <Col xs={12} md={6} lg={3} className="g-5">
+      <Col xs={12} md={6} lg={4} className="g-5">
         <Card
-          className="card-customize   "
+          className="card-customize"
           onClick={provaClick}
-          border={select ? "danger" : null}
+          border={isSelected === asin ? "danger" : null}
         >
           {" "}
           {/*Se select è true allora imposta danger, altrimenti non fare nulla  ?= se la condizione è vera, := altrimenti */}
@@ -31,8 +30,6 @@ const BookSingle = ({ img, title, price, category, asin }) => {
             </Card.Text>
           </Card.Body>
         </Card>
-
-        {select && <CommentArea asin={asin} />}
       </Col>
     </>
   );

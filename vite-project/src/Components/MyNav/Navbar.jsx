@@ -6,12 +6,12 @@ import "./style.css";
 
 import { useContext, useState, useEffect } from "react";
 import { BookContext } from "../../context/BookContext";
-import { ThemeContext } from "../../context/ThemeContext";
+//import { ThemeContext } from "../../context/ThemeContext";
 
 const Navigation = () => {
   const { books, setBooks, allBooks } = useContext(BookContext);
 
-  const { isDark, setIsDark } = useContext(ThemeContext);
+  //const { isDark, setIsDark } = useContext(ThemeContext);
 
   const [inputText, setInput] = useState("");
 

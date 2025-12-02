@@ -11,7 +11,7 @@ import booksSciFi from "./Components/Genre/scifi.json";
 import "./App.css";
 import { useState } from "react";
 import { BookProvider } from "./context/BookContext";
-
+import { CommentProvider } from "./context/CommentContext";
 import { ThemeProvider } from "./context/ThemeContext";
 const App = () => {
   const [books, setBooks] = useState([
@@ -22,15 +22,17 @@ const App = () => {
     ...booksSciFi,
   ]);
   return (
-    <ThemeProvider>
-      <BookProvider>
-        <Navigation />
-        <WelcomeAlert />
-        <AllTheBooks />
+    <CommentProvider>
+      <ThemeProvider>
+        <BookProvider>
+          <Navigation />
+          <WelcomeAlert />
+          <AllTheBooks />
 
-        <FooterProva></FooterProva>
-      </BookProvider>
-    </ThemeProvider>
+          <FooterProva />
+        </BookProvider>
+      </ThemeProvider>
+    </CommentProvider>
   );
 };
 

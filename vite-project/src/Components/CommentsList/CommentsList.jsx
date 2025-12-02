@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./style.css";
+import { CommentContext } from "../../context/CommentContext";
 
 const token =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGViYjc4ZWY0ZWVkNTAwMTVhOWNhYjIiLCJpYXQiOjE3NjM3NDk0OTUsImV4cCI6MTc2NDk1OTA5NX0.RDwrCS94rhnnI_ZJ4SnW0hcBP93djavojHLQ1N4E-FE";
@@ -7,10 +8,12 @@ const token =
 const CommentList = ({ asin, comment, rate, _id }) => {
   const [comments, setComments] = useState([]);
 
+  const { isSelected } = useContext(CommentContext);
+
   const updateComment = {
     comment: comment.value,
     rate: rate.value,
-    elementId: asin,
+    elementId: isSelected,
   };
 
   const changheComment = async (_id) => {
@@ -49,7 +52,7 @@ const CommentList = ({ asin, comment, rate, _id }) => {
   const getBooks = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/books/${asin}/comments/`,
+        `https://striveschool-api.herokuapp.com/api/books/${isSelected}/comments/`,
         {
           headers: {
             Authorization: token,
@@ -57,7 +60,6 @@ const CommentList = ({ asin, comment, rate, _id }) => {
         }
       );
       const data = await response.json();
-
       setComments(data);
     } catch (error) {
       console.log(error.message);
@@ -66,7 +68,7 @@ const CommentList = ({ asin, comment, rate, _id }) => {
 
   useEffect(() => {
     getBooks();
-  }, []);
+  }, [isSelected]);
 
   return (
     <>
