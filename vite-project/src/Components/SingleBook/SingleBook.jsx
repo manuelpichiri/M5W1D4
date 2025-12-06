@@ -4,6 +4,7 @@ import "./style.css";
 import { useContext, useState } from "react";
 import CommentArea from "../CommentArea/CommentArea";
 import { CommentContext } from "../../context/CommentContext";
+import { Link } from "react-router-dom";
 const BookSingle = ({ img, title, price, category, asin }) => {
   const { isSelected, setIsSelected } = useContext(CommentContext);
 
@@ -29,6 +30,11 @@ const BookSingle = ({ img, title, price, category, asin }) => {
               {category}
             </Card.Text>
           </Card.Body>
+          <div>
+            <Link to={`/BookDetails/${asin}`} className="btn btn-info m-2">
+              Details
+            </Link>
+          </div>
         </Card>
       </Col>
     </>
