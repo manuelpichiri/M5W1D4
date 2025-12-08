@@ -1,10 +1,10 @@
 import "./style.css";
 import { Container, Row, Col } from "react-bootstrap";
 const WelcomeAlert = () => {
-  //alert("Benventuo");
+  alert("Benventuo");
 
   return (
-    <Container fluid className="hero">
+    <Container fluid className="hero" data-testid="title">
       <Row>
         <Col>
           <div className="d-flex justify-content-center align-items-center flex-column ">

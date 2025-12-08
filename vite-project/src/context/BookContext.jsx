@@ -23,7 +23,6 @@ export const BookProvider = ({ children }) => {
     } catch (error) {
       console.log(error.message);
     } finally {
-      console.log(loading);
       setLoading(false);
     }
   };

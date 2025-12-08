@@ -3,3 +3,34 @@
   align-items: center;
   margin-top: 30px;
 }
+.custom-details {
+  font-size: 48px;
+  font-weight: bold;
+}
+.div-custom1 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.img-custom {
+  width: 600px;
+}
+
+.category-custom {
+  font-size: 30px;
+}
+
+.div-paragraph {
+  padding-bottom: 240px;
+}
+.div-details {
+  display: flex;
+  align-content: center;
+}
+
+@media (max-width: 1230px) {
+  .row-custom {
+    display: flex;
+    flex-direction: column;
+  }
+}

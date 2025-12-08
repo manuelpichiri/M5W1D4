@@ -8,6 +8,7 @@ import { BookContext } from "../../context/BookContext";
 import Spinner from "react-bootstrap/Spinner";
 import { Col } from "react-bootstrap";
 import { CommentContext } from "../../context/CommentContext";
+
 const AllTheBooks = () => {
   const { books, loading } = useContext(BookContext);
   const { isSelected, setIsSelected } = useContext(CommentContext);
@@ -19,9 +20,9 @@ const AllTheBooks = () => {
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       ) : (
-        <Row className="d-flex justify-content-between">
-          <Col>
-            <Row className="d-flex justify-content-between">
+        <Row className="d-flex justify-content-between mt-5 ">
+          <Col xs={6} md={8} lg={9}>
+            <div className="prova">
               {books.slice(0, 20).map((book, index) => (
                 <BookSingle
                   img={book.img}
@@ -32,9 +33,9 @@ const AllTheBooks = () => {
                   asin={book.asin}
                 ></BookSingle>
               ))}
-            </Row>
+            </div>
           </Col>
-          <Col xs={12} md={3} lg={3} className=" mt-5 ps-4 pe-4">
+          <Col xs={6} md={4} lg={3} className="  commentAreaCustom">
             {" "}
             <CommentArea asin={isSelected}></CommentArea>
           </Col>

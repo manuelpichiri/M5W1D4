@@ -5,9 +5,10 @@ import { useContext, useState } from "react";
 import CommentArea from "../CommentArea/CommentArea";
 import { CommentContext } from "../../context/CommentContext";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../../context/ThemeContext";
 const BookSingle = ({ img, title, price, category, asin }) => {
   const { isSelected, setIsSelected } = useContext(CommentContext);
-
+  const { isDark, setIsDark } = useContext(ThemeContext);
   const provaClick = () => {
     setIsSelected(asin);
   };
@@ -16,21 +17,31 @@ const BookSingle = ({ img, title, price, category, asin }) => {
     <>
       <Col xs={12} md={6} lg={4} className="g-5">
         <Card
-          className="card-customize"
+          className={`card-customize `}
           onClick={provaClick}
-          border={isSelected === asin ? "danger" : null}
+          border={isSelected === asin ? "info" : null}
         >
           {" "}
           {/*Se select è true allora imposta danger, altrimenti non fare nulla  ?= se la condizione è vera, := altrimenti */}
-          <Card.Body>
+          <Card.Body className={isDark ? "dark-mode" : "light-mode"}>
             <Card.Img variant="top" src={img} className="card-img-top" />
-            <Card.Title className="title-card mt-2">{title}</Card.Title>
-            <Card.Text>{price}€</Card.Text>
+            <Card.Title
+              className={`title-card mt-2 ${
+                isDark ? "text-light" : "text-dark"
+              }`}
+            >
+              {title}
+            </Card.Title>
+            <Card.Text
+              className={`price-card ${isDark ? "text-light" : "text-dark"}`}
+            >
+              {price}€
+            </Card.Text>
             <Card.Text className="badge text-bg-secondary  ">
               {category}
             </Card.Text>
           </Card.Body>
-          <div>
+          <div className={isDark ? "dark-mode" : "light-mode"}>
             <Link to={`/BookDetails/${asin}`} className="btn btn-info m-2">
               Details
             </Link>

@@ -1,17 +1,18 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import { Moon, Sun } from "lucide-react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 import { useContext, useState, useEffect } from "react";
 import { BookContext } from "../../context/BookContext";
-//import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Navigation = () => {
   const { books, setBooks, allBooks } = useContext(BookContext);
 
-  //const { isDark, setIsDark } = useContext(ThemeContext);
+  const { isDark, setIsDark } = useContext(ThemeContext);
 
   const [inputText, setInput] = useState("");
 
@@ -32,49 +33,53 @@ const Navigation = () => {
   };
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary ">
+    <Navbar expand="lg" className={isDark ? "dark-mode" : "light-mode"}>
       <Container className="d-flex justify-content-between">
-        <Navbar.Brand href="#home">HOMELOGO</Navbar.Brand>
+        <Navbar.Brand className="nav-brand-custom">
+          <Link to={`/`}>
+            <img src="../../../public/assets/BookShop.png" className="w-50" />
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <div className="d-flex align-items-center justify-content-center w-100">
           <input
-            className="w-100 input-search"
-            placeholder="Cerca il tuo libro..."
+            className="w-75 input-search input-custom"
+            placeholder="Search your book..."
             type="text"
             value={inputText}
             onChange={targetValuePlusReStockBook} //controlla il valore scritto all'interno dell'input e in caso di input vuoto esegue e setta i libri allo stato iniziale
           />
-          <button onClick={filteredBooks} className="btn btn-info ms-2">
-            Cerca
+          <button
+            onClick={filteredBooks}
+            className={`button-custom ${isDark ? "dark-mode" : "light-mode"}`}
+          >
+            Search
           </button>
         </div>
         <Navbar.Collapse id="basic-navbar-nav" className="flex-grow-0">
-          <Nav className="me-auto">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">About</Nav.Link>
-            <Nav.Link href="#">Browse</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+          <Nav className={`me-auto  ${isDark ? "dark-mode" : "light-mode"}`}>
+            <Nav.Link href="#" className={isDark ? "text-light" : "text-dark"}>
+              About
+            </Nav.Link>
+            <Nav.Link href="#" className={isDark ? "text-light" : "text-dark"}>
+              Browse
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <div className="form-check form-switch">
+        <div className="form-check form-switch d-flex align-items-center ">
           <input
-            className="form-check-input"
+            className="form-check-input "
             type="checkbox"
             role="switch"
+            checked={isDark}
             id="flexSwitchCheckDefault"
+            onChange={(event) => setIsDark(event.target.checked)}
           />
-          <label className="form-check-label" for="flexSwitchCheckDefault">
-            Dark Mode
+          <label
+            className="form-check-label d-flex ms-2"
+            for="flexSwitchCheckDefault"
+          >
+            {isDark ? <Moon fill="#deb616ff" /> : <Sun fill="#e99b16ff" />}
           </label>
         </div>
       </Container>

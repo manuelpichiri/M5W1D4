@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   height: 50px;
+  z-index: 10;
 }
 
 .list-decoration {
@@ -17,4 +18,14 @@
 
 .list-decoration:hover {
   color: blueviolet;
+}
+
+.dark-mode {
+  background-color: rgb(50, 50, 50);
+  color: #ffffff;
+}
+
+.light-mode {
+  background-color: #ffffff;
+  color: black;
 }
